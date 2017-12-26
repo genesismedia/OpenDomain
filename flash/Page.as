@@ -4,42 +4,6 @@ package com.genesismedia.page {
 	import com.adobe.serialization.json.JSON;
 
 	public class Page {
-		private static const SMART_TAG:String = "if (navigator && navigator.platform) {" +
-			"var sasIsIosUiwebview = false;" +
-			"if (navigator.platform.substr(0,2) === 'iP') {" +
-	    "var lte9 = /constructor/i.test(window.HTMLElement);" +
-	    "var nav = window.navigator, ua = nav.userAgent, idb = !!window.indexedDB;" +
-	    "if (ua.indexOf('Safari') !== -1 && ua.indexOf('Version') !== -1 && !nav.standalone) {" +
-	    "sasIsIosUiwebview = false;" +
-	    "} else if ((!idb && lte9) || !window.statusbar.visible) {" +
-	    "sasIsIosUiwebview = true;" +
-	    "} else if ((window.webkit && window.webkit.messageHandlers) || !lte9 || idb) {" +
-	    "sasIsIosUiwebview = true;" +
-	    "}" +
-	  	"}" +
-	    "if (!sasIsIosUiwebview) {" +
-	    "var smartCsync=document.createElement('IFRAME');smartCsync.onload=function(){if (navigator && navigator.platform) {" +
-			"var sasIsIosWebview = false;" +
-			"if (navigator.platform.substr(0,2) === 'iP') {" +
-	    "var lte9 = /constructor/i.test(window.HTMLElement);" +
-	    "var nav = window.navigator, ua = nav.userAgent, idb = !!window.indexedDB;" +
-	    "if (ua.indexOf('Safari') !== -1 && ua.indexOf('Version') !== -1 && !nav.standalone) {" +
-	    "sasIsIosWebview = false;" +
-	    "} else if ((!idb && lte9) || !window.statusbar.visible) {" +
-	    "sasIsIosWebview = true;" +
-	    "} else if ((window.webkit && window.webkit.messageHandlers) || !lte9 || idb) {" +
-	    "sasIsIosWebview = true;" +
-	    "}" +
-	    "}" +
-	    "if (!sasIsIosWebview) {" +
-	    "var csyncCname=new Image;csyncCname.src='//rtb-csync.smartadserver.com/h/cs/cn?cname=adserver.genesismediaus.com&ts=636208827421283906';" +
-	    "}" +
-			"};};smartCsync.src='//csync.smartadserver.com/rtb/csync/CookieSync.html?nwid=1316&dcid=4';" +
-	    "smartCsync.scrolling = 'no';smartCsync.frameBorder = 0;smartCsync.width = 0;smartCsync.height = 0;smartCsync.style.margin = 0;smartCsync.style.padding = 0;smartCsync.style.display = 'none';smartCsync.style.width = '0px';smartCsync.style.height = '0px';smartCsync.style.visibility = 'hidden';" +
-	    "if(document.body != null)document.body.appendChild(smartCsync);" +
-	    "}" +
-			"}";
-
 		private static const DOMAIN_CHECK:String = 'function(){' +
 			'try {' +
 			'if (top.location == undefined || top.location.href == undefined) {' +
@@ -128,8 +92,6 @@ package com.genesismedia.page {
 					Security.allowDomain(_url);
 					_protocol = ExternalInterface.call("function() { return location.protocol; }");
 					_sameDomain = ExternalInterface.call(DOMAIN_CHECK);
-
-					ExternalInterface.call("function(){" + SMART_TAG + "}");
 				} catch (e:Error) {
 				}
 			}
